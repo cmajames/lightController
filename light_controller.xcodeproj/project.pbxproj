@@ -14,12 +14,15 @@
 		0C82B20D1C039958002DE328 /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C82B2101C039958002DE328 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		0C82B2131C039958002DE328 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		0C82B2251C076987002DE328 /* definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = definitions.h; sourceTree = "<group>"; };
+		0C82B2261C10C7A0002DE328 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		0C82B2021C039958002DE328 = {
 			isa = PBXGroup;
 			children = (
+				0C82B2261C10C7A0002DE328 /* .gitignore */,
 				0C82B20F1C039958002DE328 /* light_controller */,
 				0C82B20E1C039958002DE328 /* Products */,
 			);
@@ -38,6 +41,7 @@
 			children = (
 				0C82B2101C039958002DE328 /* main.c */,
 				0C82B2121C039958002DE328 /* Makefiles */,
+				0C82B2251C076987002DE328 /* definitions.h */,
 			);
 			path = light_controller;
 			sourceTree = "<group>";

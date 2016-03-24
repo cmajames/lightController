@@ -8,24 +8,82 @@
 void init_io(void);
 void init_timers(void);
 void init_interrupts(void);
+void hsi2rgb(float H, float S, float I, int* rgb);
 
 //global variables
 volatile uint8_t enc_one_value = 128;
 volatile uint8_t enc_two_value = 128;
 volatile uint8_t enc_three_value = 128;
+int rgb[3];
+float H,S,I;
+H = 0;
+S = 1;
+I = 1;
 
 int main(void) {
     init_io();
     init_timers();
     init_interrupts();
     
+    
+    
     while (1)
     {
+        
+        // temporary: cycles light strip through all hues
+        for (H=0; H<360; H++)
+        {
+            OCR0A = rgb[0];
+            OCR0B = rgb[1];
+            OCR2B = rgb[2];
+            
+            hsi2rgb(H,  S,  I, rgb);
+            
+            _delay_ms(1);
+        }
+        
+        
+        H = 0;
+        S = 1;
+        I = 1;
+        
+        
+        /*
         OCR0A = enc_one_value;
         OCR0B = enc_two_value;
         OCR2B = enc_three_value;
+         */
     }
     return 0; // never reached
+}
+
+// function from http://blog.saikoled.com/post/43693602826/why-every-led-light-should-be-using-hsi
+void hsi2rgb(float H, float S, float I, int* rgb) {
+    int r, g, b;
+    H = fmod(H,360); // cycle H around to 0-360 degrees
+    H = 3.14159*H/(float)180; // Convert to radians.
+    S = S>0?(S<1?S:1):0; // clamp S and I to interval [0,1]
+    I = I>0?(I<1?I:1):0;
+    
+    // Math! Thanks in part to Kyle Miller.
+    if(H < 2.09439) {
+        r = 255*I/3*(1+S*cos(H)/cos(1.047196667-H));
+        g = 255*I/3*(1+S*(1-cos(H)/cos(1.047196667-H)));
+        b = 255*I/3*(1-S);
+    } else if(H < 4.188787) {
+        H = H - 2.09439;
+        g = 255*I/3*(1+S*cos(H)/cos(1.047196667-H));
+        b = 255*I/3*(1+S*(1-cos(H)/cos(1.047196667-H)));
+        r = 255*I/3*(1-S);
+    } else {
+        H = H - 4.188787;
+        b = 255*I/3*(1+S*cos(H)/cos(1.047196667-H));
+        r = 255*I/3*(1+S*(1-cos(H)/cos(1.047196667-H)));
+        g = 255*I/3*(1-S);
+    }
+    rgb[0]=r;
+    rgb[1]=g;
+    rgb[2]=b;
 }
 
 void init_io(void) {

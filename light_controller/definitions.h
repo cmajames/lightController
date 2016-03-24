@@ -6,6 +6,59 @@
 //  Copyright (c) 2015 Wireless Club. All rights reserved.
 //
 
+
+/*********************************
+ 
+ 
+             ----------
+    PC6    -| 1     28 |-   PC5
+    PD0    -| 2     27 |-   PC4
+    PD1    -| 3     26 |-   PC3
+    PD2    -| 4     25 |-   PC2
+    PD3    -| 5     24 |-   PC1
+    PD4    -| 6     23 |-   PC0
+    VCC    -| 7     22 |-   GND
+    GND    -| 8     21 |-   AREF
+    PB6    -| 9     20 |-   AVCC
+    PB7    -| 10    19 |-   PB5
+    PD5    -| 11    18 |-   PB4
+    PD6    -| 12    17 |-   PB3
+    PD7    -| 13    16 |-   PB2
+    PB0    -| 14    15 |-   PB1
+             ----------
+
+    PIN CONNECTIONS
+    ---------------
+    SS:     16  PB2
+    MOSI:   17  PB3
+    MISO:   18  PB4
+    SCK:    19  PB5
+    E2_BUT: 15  PB1
+    E1_BUT: 14  PB0
+    E3_BUT: 10  PB7
+    E1_A:   23  PC0
+    E1_B:   24  PC1
+    E2_A:   25  PC2
+    E2_B:   26  PC3
+    SDA:    27  PC4
+    SCL:    28  PC5
+    RST:    1   PC6
+    E3_A:   2   PD0
+    E3_B:   3   PD1
+    RED:    5   PD3 OC2B
+    GREEN:  11  PD5 OC0B
+    BLUE:   12  PD6 OC0A
+ 
+    Note: color names may be inaccurate. Taken 
+    from the circuit boards, depends on wiring.
+    Will probably be    GND
+                        GREEN
+                        RED
+                        BLUE
+ 
+ *********************************/
+
+
 #ifndef light_controller_definitions_h
 #define light_controller_definitions_h
 

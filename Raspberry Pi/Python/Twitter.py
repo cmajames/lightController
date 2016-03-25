@@ -2,24 +2,9 @@
 import time
 from tweepy.auth import OAuthHandler
 import tweepy
-import RPi.GPIO as GPIO
 
 # import functions from keysRPI.py
-from keysRPI import *
-
-# set the GPIO mode
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
-
-# set the LED GPIO pins
-red = 26
-blue = 20
-green = 21
-
-# set the GPIO pins to output
-GPIO.setup(red, GPIO.OUT)
-GPIO.setup(blue, GPIO.OUT)
-GPIO.setup(green, GPIO.OUT)
+from keysPython import *
 
 # set the keys for twitter access from keysRPI.py
 token = keys["token"]
@@ -43,8 +28,7 @@ def Check():
 		    text = "%s says '%s'" % (item.user.screen_name, item.text)
 		    for i in colors:
 			    if(i in item.text):
-			    	# if it finds a color print the color to the screen and output that color on the LED
-			    	coloroutput(i);
+			    	# if it finds a color print the color to the screen
 			    	print i
 			    	return
 		print text
